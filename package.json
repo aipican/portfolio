@@ -1,5 +1,6 @@
 {
-  "name": "temp-vite-project",
+  "name": "xiaoniu-portfolio",
+  "homepage": "https://aipican.github.io/portfolio/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
