@@ -39,4 +39,4 @@ jobs:
           # 修改点2：指定打包目录（核心！CRA填./build，Vite填./dist）
           publish_dir: ./dist
           # 修改点3：若仓库分支是master，改为master
-          publish_branch: main
+          # publish_branch: main
