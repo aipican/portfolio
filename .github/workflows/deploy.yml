@@ -1,0 +1,42 @@
+# 工作流名称，可自定义
+name: React项目自动构建并部署到GitHub Pages
+# 触发条件：推代码到main分支时，自动执行该工作流（若仓库分支是master，改为master）
+on:
+  push:
+    branches: [ main ]
+# 执行的任务
+jobs:
+  build-and-deploy:
+    # GitHub提供的虚拟服务器环境，选Ubuntu最新版即可
+    runs-on: ubuntu-latest
+    # 任务执行步骤
+    steps:
+      # 步骤1：拉取main分支的源码到虚拟服务器
+      - name: 拉取项目源码
+        uses: actions/checkout@v4
+
+      # 步骤2：安装Node.js环境（修改点1：指定Node版本，与本地一致即可，如18/20）
+      - name: 安装Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm' # 缓存npm依赖，提升下次构建速度
+
+      # 步骤3：安装项目依赖（若用yarn/pnpm，改为yarn install / pnpm install）
+      - name: 安装npm依赖
+        run: npm install
+
+      # 步骤4：打包项目（无需修改，与package.json的build命令一致）
+      - name: 打包项目
+        run: npm run build
+
+      # 步骤5：部署到GitHub Pages
+      - name: 部署到gh-pages分支
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          # 自动生成的密钥，无需手动配置
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          # 修改点2：指定打包目录（核心！CRA填./build，Vite填./dist）
+          publish_dir: ./dist
+          # 修改点3：若仓库分支是master，改为master
+          publish_branch: main
