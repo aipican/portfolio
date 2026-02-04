@@ -108,7 +108,7 @@ const ProjectCard: FC<{
 }> = ({ project, index, onViewDetail, onViewProcess }) => {
     const [isHovered, setIsHovered] = useState(false);
     const isSoutuipingce = project.id === 3;
-    const isSlideImage = project.id === 1 || project.id === 3 || project.id === 4 || project.id === 5;
+    const isSlideImage = project.id === 1 || project.id === 2 || project.id === 3 || project.id === 4 || project.id === 5;
     const hasDescriptionNewline = project.description.includes('\n');
 
     return (
