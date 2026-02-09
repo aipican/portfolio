@@ -22,8 +22,16 @@ const Projects: FC<{
     const closeDetail = () => setSelectedProject(null);
     const closeProcess = () => setProcessProject(null);
 
+
+
     return (
-        <section ref={sectionRef} id="projects" className="min-h-screen bg-gradient-to-b from-[var(--bg-primary)] to-[var(--bg-secondary)] py-20 px-6">
+        <section
+            ref={sectionRef}
+            id="projects"
+            className="min-h-screen bg-gradient-to-b from-[var(--bg-primary)] to-[var(--bg-secondary)] py-20 px-6 relative overflow-hidden group"
+        >
+
+
             <div className="max-w-7xl mx-auto space-y-10">
                 <div className="text-center space-y-6">
                     <h2 className="text-5xl md:text-6xl font-bold tracking-tight bg-gradient-to-r from-[var(--text-primary)] to-[var(--text-secondary)] bg-clip-text text-transparent">
@@ -71,7 +79,7 @@ const Projects: FC<{
                                 AI辅测
                             </button>
                         </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div className="grid grid-cols-1 md:grid-cols-2 landscape:grid-cols-2 gap-8">
                             {filteredProjects.map((project, index) => (
                                 <ProjectCard
                                     key={project.id}
