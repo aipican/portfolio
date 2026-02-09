@@ -23,19 +23,19 @@ const Projects: FC<{
     const closeProcess = () => setProcessProject(null);
 
     return (
-        <section ref={sectionRef} id="projects" className="min-h-screen bg-[#0b0b12] py-20 px-6">
+        <section ref={sectionRef} id="projects" className="min-h-screen bg-gradient-to-b from-[var(--bg-primary)] to-[var(--bg-secondary)] py-20 px-6">
             <div className="max-w-7xl mx-auto space-y-10">
                 <div className="text-center space-y-6">
-                    <h2 className="text-5xl md:text-6xl font-bold text-white">
+                    <h2 className="text-5xl md:text-6xl font-bold tracking-tight bg-gradient-to-r from-[var(--text-primary)] to-[var(--text-secondary)] bg-clip-text text-transparent">
                         {view === 'projects' ? (
                             <>
                                 项目展示
-                                <span className="ml-2 text-2xl font-normal lowercase tracking-[0.2em] text-blue-300">(部分)</span>
+                                <span className="ml-2 text-2xl font-normal lowercase tracking-[0.2em] text-white/50">(部分)</span>
                             </>
                         ) : (
                             <>
                                 个人简历
-                                <span className="ml-2 text-2xl font-normal lowercase tracking-[0.2em] text-blue-300">(部分)</span>
+                                <span className="ml-2 text-2xl font-normal lowercase tracking-[0.2em] text-white/50">(部分)</span>
                             </>
                         )}
                     </h2>
@@ -45,31 +45,28 @@ const Projects: FC<{
 
                 {view === 'projects' ? (
                     <>
-                        <div className="flex justify-center gap-6 mb-6 flex-wrap">
+                        <div className="flex justify-center gap-3 mb-6 flex-wrap">
                             <button
                                 onClick={() => setFilter('model_eval')}
-                                className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${filter === 'model_eval'
-                                    ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg shadow-purple-500/50'
-                                    : 'bg-gray-800 text-gray-400 hover:bg-gray-700 hover:text-white'
-                                    }`}
+                                className={`rounded-full px-6 py-3 text-lg font-semibold transition-all duration-300 border uppercase tracking-[0.25em] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-primary)]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-primary)] active:scale-95 hover:scale-105 ${filter === 'model_eval'
+                                    ? 'border-transparent bg-gradient-to-r from-[var(--accent-primary)] via-[var(--accent-secondary)] to-[var(--accent-tertiary)] text-white shadow-2xl shadow-[var(--accent-primary)]/30'
+                                    : 'border-[var(--border-medium)] bg-[var(--bg-tertiary)]/40 backdrop-blur-sm text-[var(--text-secondary)] hover:border-[var(--accent-primary)]/40 hover:bg-[var(--bg-tertiary)]/60 hover:text-[var(--text-primary)] hover:shadow-lg hover:shadow-[var(--accent-primary)]/10'}`}
                             >
                                 模型评测
                             </button>
                             <button
                                 onClick={() => setFilter('experience')}
-                                className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${filter === 'experience'
-                                    ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg shadow-purple-500/50'
-                                    : 'bg-gray-800 text-gray-400 hover:bg-gray-700 hover:text-white'
-                                    }`}
+                                className={`rounded-full px-6 py-3 text-lg font-semibold transition-all duration-300 border uppercase tracking-[0.25em] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-primary)]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-primary)] active:scale-95 hover:scale-105 ${filter === 'experience'
+                                    ? 'border-transparent bg-gradient-to-r from-[var(--accent-primary)] via-[var(--accent-secondary)] to-[var(--accent-tertiary)] text-white shadow-2xl shadow-[var(--accent-primary)]/30'
+                                    : 'border-[var(--border-medium)] bg-[var(--bg-tertiary)]/40 backdrop-blur-sm text-[var(--text-secondary)] hover:border-[var(--accent-primary)]/40 hover:bg-[var(--bg-tertiary)]/60 hover:text-[var(--text-primary)] hover:shadow-lg hover:shadow-[var(--accent-primary)]/10'}`}
                             >
                                 体验评测
                             </button>
                             <button
                                 onClick={() => setFilter('ai_assisted')}
-                                className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${filter === 'ai_assisted'
-                                    ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg shadow-purple-500/50'
-                                    : 'bg-gray-800 text-gray-400 hover:bg-gray-700 hover:text-white'
-                                    }`}
+                                className={`rounded-full px-6 py-3 text-lg font-semibold transition-all duration-300 border uppercase tracking-[0.25em] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-primary)]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-primary)] active:scale-95 hover:scale-105 ${filter === 'ai_assisted'
+                                    ? 'border-transparent bg-gradient-to-r from-[var(--accent-primary)] via-[var(--accent-secondary)] to-[var(--accent-tertiary)] text-white shadow-2xl shadow-[var(--accent-primary)]/30'
+                                    : 'border-[var(--border-medium)] bg-[var(--bg-tertiary)]/40 backdrop-blur-sm text-[var(--text-secondary)] hover:border-[var(--accent-primary)]/40 hover:bg-[var(--bg-tertiary)]/60 hover:text-[var(--text-primary)] hover:shadow-lg hover:shadow-[var(--accent-primary)]/10'}`}
                             >
                                 AI辅测
                             </button>
@@ -85,18 +82,22 @@ const Projects: FC<{
                                 />
                             ))}
                         </div>
-                        {selectedProject && (
-                            <ProjectDetailPanel project={selectedProject} onClose={closeDetail} />
-                        )}
-                        {processProject && (
-                            <ProjectProcessPanel project={processProject} onClose={closeProcess} />
-                        )}
+                        {
+                            selectedProject && (
+                                <ProjectDetailPanel project={selectedProject} onClose={closeDetail} />
+                            )
+                        }
+                        {
+                            processProject && (
+                                <ProjectProcessPanel project={processProject} onClose={closeProcess} />
+                            )
+                        }
                     </>
                 ) : (
                     <ResumePage />
                 )}
-            </div>
-        </section>
+            </div >
+        </section >
     );
 };
 
@@ -113,7 +114,7 @@ const ProjectCard: FC<{
 
     return (
         <div
-            className="group relative bg-gray-800/50 rounded-xl overflow-hidden backdrop-blur-sm border border-gray-700 hover:border-purple-500 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/20 hover:-translate-y-2 max-h-[90vh] hover:max-h-[200vh] flex flex-col"
+            className="group relative bg-[var(--bg-tertiary)]/60 rounded-2xl overflow-hidden backdrop-blur-md border border-[var(--border-medium)] hover:border-[var(--accent-primary)]/40 transition-all duration-500 hover:shadow-2xl hover:shadow-[var(--accent-primary)]/20 hover:-translate-y-2 flex flex-col cursor-pointer"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             style={{
@@ -122,7 +123,7 @@ const ProjectCard: FC<{
             onClick={onViewDetail}
         >
             <div
-                className="relative h-48 overflow-hidden bg-gradient-to-br from-purple-900/20 to-pink-900/20"
+                className="relative h-48 overflow-hidden bg-gradient-to-br from-[var(--accent-primary)]/[0.12] to-[var(--accent-secondary)]/[0.12]"
                 onClick={(e) => {
                     if (!isSlideImage) return;
                     e.stopPropagation();
@@ -141,7 +142,7 @@ const ProjectCard: FC<{
                             isSoutuipingce ? (
                                 <button
                                     type="button"
-                                    className="flex-1 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-4 py-2 rounded-lg text-center font-semibold hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300"
+                                    className="flex-1 bg-gradient-to-r from-[var(--accent-primary)] via-[var(--accent-secondary)] to-[var(--accent-tertiary)] text-white px-4 py-2.5 rounded-lg text-center font-bold transition-all duration-300 hover:shadow-xl hover:shadow-[var(--accent-primary)]/40 hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-primary)]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-primary)]"
                                     onClick={(e) => {
                                         e.stopPropagation();
                                         onViewDetail();
@@ -154,7 +155,7 @@ const ProjectCard: FC<{
                                     href={project.liveUrl}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex-1 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-4 py-2 rounded-lg text-center font-semibold hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300"
+                                    className="flex-1 bg-gradient-to-r from-[var(--accent-primary)] via-[var(--accent-secondary)] to-[var(--accent-tertiary)] text-white px-4 py-2.5 rounded-lg text-center font-bold transition-all duration-300 hover:shadow-xl hover:shadow-[var(--accent-primary)]/40 hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-primary)]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-primary)]"
                                     onClick={(e) => e.stopPropagation()}
                                 >
                                     查看详情
@@ -165,7 +166,7 @@ const ProjectCard: FC<{
                             isSoutuipingce ? (
                                 <button
                                     type="button"
-                                    className="flex-1 bg-gray-700 text-white px-4 py-2 rounded-lg text-center font-semibold hover:bg-gray-600 transition-all duration-300"
+                                    className="flex-1 bg-[var(--bg-tertiary)]/60 backdrop-blur-sm border border-[var(--border-medium)] text-white px-4 py-2.5 rounded-lg text-center font-bold transition-all duration-300 hover:bg-[var(--bg-tertiary)]/80 hover:border-[var(--accent-primary)]/40 hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-primary)]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-primary)]"
                                     onClick={(e) => {
                                         e.stopPropagation();
                                         onViewProcess();
@@ -178,7 +179,7 @@ const ProjectCard: FC<{
                                     href={project.githubUrl}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex-1 bg-gray-700 text-white px-4 py-2 rounded-lg text-center font-semibold hover:bg-gray-600 transition-all duration-300"
+                                    className="flex-1 bg-[var(--bg-tertiary)]/60 backdrop-blur-sm border border-[var(--border-medium)] text-white px-4 py-2.5 rounded-lg text-center font-bold transition-all duration-300 hover:bg-[var(--bg-tertiary)]/80 hover:border-[var(--accent-primary)]/40 hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-primary)]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-primary)]"
                                     onClick={(e) => e.stopPropagation()}
                                 >
                                     框架／流程
@@ -189,24 +190,24 @@ const ProjectCard: FC<{
                 </div>
             </div>
             <div className="p-6 flex-1 overflow-auto">
-                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-pink-400 transition-all duration-300">
+                <h3 className="text-2xl font-bold text-[var(--text-primary)] mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[var(--accent-primary)] group-hover:to-[var(--accent-secondary)] transition-all duration-300">
                     {project.title}
                 </h3>
-                <p className={`text-gray-400 mb-4 leading-relaxed ${hasDescriptionNewline ? 'whitespace-pre-line' : 'line-clamp-3 group-hover:line-clamp-none'}`}>
+                <p className={`text-[var(--text-muted)] mb-4 leading-relaxed ${hasDescriptionNewline ? 'whitespace-pre-line' : 'line-clamp-3 group-hover:line-clamp-none'}`}>
                     {project.description}
                 </p>
                 <div className="flex flex-wrap gap-2">
                     {project.technologies.map((tech, techIndex) => (
                         <span
                             key={techIndex}
-                            className="px-3 py-1 bg-gray-700/50 text-purple-300 rounded-full text-sm font-medium border border-purple-500/30 hover:bg-purple-500/20 hover:border-purple-400 transition-all duration-300 cursor-default"
+                            className="px-3 py-1.5 bg-[var(--bg-tertiary)]/50 text-[var(--text-secondary)] rounded-full text-sm font-medium border border-[var(--border-subtle)] hover:border-[var(--accent-primary)]/30 hover:bg-[var(--bg-tertiary)]/70 transition-all duration-300 cursor-default"
                         >
                             {tech}
                         </span>
                     ))}
                 </div>
             </div>
-            <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+            <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[var(--accent-primary)] via-[var(--accent-secondary)] to-[var(--accent-tertiary)] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
         </div>
     );
 };

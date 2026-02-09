@@ -44,7 +44,7 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white">
+    <div className="min-h-screen bg-gradient-to-br from-[var(--bg-primary)] to-[var(--bg-secondary)] text-[var(--text-primary)]">
       <Hero
         onShowProjects={showProjects}
         onShowResume={showResume}

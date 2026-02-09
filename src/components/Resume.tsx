@@ -124,22 +124,22 @@ const ResumePage: FC = () => {
                             if (e.propertyName !== 'max-height') return;
                             if (openCompany === section.company) setScrollEnabledCompany(section.company);
                         }}
-                        className={`bg-gray-800/60 rounded-2xl border border-gray-700 p-6 landscape:p-4 shadow-xl shadow-purple-500/20 backdrop-blur-sm cursor-pointer select-none will-change-[max-height] transition-[max-height] duration-500 ease-in-out ${isOpen ? 'max-h-screen landscape:max-h-[90vh]' : 'max-h-[50vh] landscape:max-h-[70vh]'} ${scrollEnabled ? 'overflow-auto' : 'overflow-hidden'}`}
+                        className={`bg-[var(--bg-tertiary)]/70 rounded-2xl border border-[var(--border-medium)] p-6 landscape:p-4 shadow-2xl shadow-[var(--accent-primary)]/10 backdrop-blur-md cursor-pointer select-none will-change-[max-height] transition-[max-height] duration-500 ease-in-out hover:border-[var(--accent-primary)]/40 hover:shadow-[var(--accent-primary)]/20 ${isOpen ? 'max-h-screen landscape:max-h-[90vh]' : 'max-h-[50vh] landscape:max-h-[70vh]'} ${scrollEnabled ? 'overflow-auto' : 'overflow-hidden'}`}
                     >
                         <div
-                            className={`sticky -top-6 landscape:-top-4 z-10 bg-gray-800 shadow-[0_8px_24px_rgba(0,0,0,0.35)] -mx-6 -mt-6 px-6 landscape:-mx-4 landscape:-mt-4 landscape:px-4 transition-[padding] duration-200 ease-out ${isCompact ? 'py-2' : 'py-3'}`}
+                            className={`sticky -top-6 landscape:-top-4 z-10 bg-[var(--bg-tertiary)] shadow-[0_8px_24px_rgba(0,0,0,0.5)] -mx-6 -mt-6 px-6 landscape:-mx-4 landscape:-mt-4 landscape:px-4 transition-[padding] duration-200 ease-out ${isCompact ? 'py-2' : 'py-3'}`}
                         >
                             <div className={`origin-left transition-transform duration-200 ease-out ${isCompact ? 'scale-90' : 'scale-100'}`}>
-                                <h3 className="text-2xl font-bold text-white">{section.company}</h3>
+                                <h3 className="text-2xl font-bold bg-gradient-to-r from-[var(--text-primary)] to-[var(--text-secondary)] bg-clip-text text-transparent">{section.company}</h3>
                             </div>
-                            <div className={`flex items-center justify-between text-purple-300 origin-left transition-[transform,margin,font-size] duration-200 ease-out ${isCompact ? 'mt-0.5 text-xs scale-95' : 'mt-1 text-sm scale-100'}`}>
-                                <span>{section.period}</span>
-                                <span className="text-blue-300">{section.title}</span>
+                            <div className={`flex items-center justify-between text-[var(--text-secondary)] origin-left transition-[transform,margin,font-size] duration-200 ease-out ${isCompact ? 'mt-0.5 text-xs scale-95' : 'mt-1 text-sm scale-100'}`}>
+                                <span className="text-[var(--accent-primary)]">{section.period}</span>
+                                <span className="text-[var(--accent-secondary)]">{section.title}</span>
                             </div>
                         </div>
-                        <p className="text-gray-400 mt-3 mb-4 leading-relaxed whitespace-pre-wrap">{renderBracketBold(section.summary)}</p>
-                        <p className="text-purple-300 font-semibold mb-1">工作内容</p>
-                        <ul className="text-gray-300 list-disc list-inside mb-4 space-y-1">
+                        <p className="text-[var(--text-muted)] mt-3 mb-4 leading-relaxed whitespace-pre-wrap">{renderBracketBold(section.summary)}</p>
+                        <p className="text-[var(--accent-primary)] font-semibold mb-1">工作内容</p>
+                        <ul className="text-[var(--text-secondary)] list-disc list-inside mb-4 space-y-1">
                             {section.tasks.map((task) => (
                                 <li key={task}>
                                     {(() => {
@@ -150,7 +150,7 @@ const ResumePage: FC = () => {
 
                                         return (
                                             <>
-                                                <strong className="font-semibold text-white">{title}</strong>
+                                                <strong className="font-semibold text-[var(--text-primary)]">{title}</strong>
                                                 <span className="whitespace-pre-wrap">{renderBracketBold(body)}</span>
                                             </>
                                         );
@@ -158,8 +158,8 @@ const ResumePage: FC = () => {
                                 </li>
                             ))}
                         </ul>
-                        <p className="text-purple-300 font-semibold mb-1">价值产出</p>
-                        <ul className="text-gray-300 list-disc list-inside space-y-1">
+                        <p className="text-[var(--accent-primary)] font-semibold mb-1">价值产出</p>
+                        <ul className="text-[var(--text-secondary)] list-disc list-inside space-y-1">
                             {section.outcomes.map((outcome) => (
                                 <li key={outcome}>
                                     <span className="whitespace-pre-wrap">{renderBracketBold(outcome)}</span>
